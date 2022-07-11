@@ -1,10 +1,10 @@
-  '''
+'''
   y_ts: 時間序列工具
   版本：v02
   日期：2022.7.9
   TBD：
       1. _r_x 改成三因子，允許 _r_x as pd
-  '''
+'''
 def diff(y):
 	import numpy as np
 	d_y = y-y.shift(1)
