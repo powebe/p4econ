@@ -125,5 +125,6 @@ def mktm(_r_y, _r_x, _startobs, _endobs, _nlag):
   _JB.columns = ['JB-stat.']
   print('\n')
   print(_JB)
-  print('\n\n')	
-  return model.params
+  print('\n\n')
+  _myOLSResult = model
+  return _myOLSResult
