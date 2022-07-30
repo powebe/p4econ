@@ -44,6 +44,7 @@ def tsplot(y, lags=None, figsize=(10, 8)):
 	return ts_ax, acf_ax, pacf_ax
 def Q_test(_Y,_nlag):
   import statsmodels.tsa.api as smt
+  import pandas as pd
   print('\n')
   # =====以下不用改=====
   acf, q, pval = smt.acf(_Y, nlags=_nlag, qstat=True,fft=False)
