@@ -126,5 +126,4 @@ def mktm(_r_y, _r_x, _startobs, _endobs, _nlag):
   print('\n')
   print(_JB)
   print('\n\n')
-  _myOLSResult = model
-  return _myOLSResult
+  return model
