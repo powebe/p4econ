@@ -1,5 +1,3 @@
-import pandas as pd
-pd.__version__
 path='https://github.com/powebe/p4econ/raw/main/'
 fname = 'fe-all.xlsx'
 SheetName ='FE-ex1'
