@@ -40,9 +40,9 @@ df1 = pd.DataFrame({'r_tw':ldiff(data['twi']),
              'r_sp500':ldiff(data['sp500'])}
              )
 
-# 更改子樣本範圍為 2000-2006年
-df1_sub=df1.iloc[59:143,:] # 往前移
-# df1_sub.describe()
+# 選擇子樣本 (2000:01 - 2006:12)，放到 df1_sub
+df1_sub=df1.iloc[60:144,:] # 2000:01 的 index = 60, 2006:12 的 index =143
+df1_sub
 
 # Demo 2.2.3 常態母體樣本均數之檢定(t 檢定)
 import scipy.stats as scs
