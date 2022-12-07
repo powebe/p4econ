@@ -18,7 +18,7 @@ def mktm(_r_y, _r_x, _startobs, _endobs, _nlag):
   import numpy as np
   import pandas as pd
   import statsmodels.tsa.api as smt
-
+  import scipy.stats as scs
   '''
   MarketM(): Market Model 估計和殘差檢定
   版本：v01
@@ -74,10 +74,12 @@ def mktm(_r_y, _r_x, _startobs, _endobs, _nlag):
 # 進行 Q 檢定
   Q_test(u,_nlag)
 # Testing for non-normality
-  import statsmodels.stats.api as sms  
+  import statsmodels.stats.api as sms
+  import scipy.stats as scs
   rname=['Jarque-Bera', 'JB two-tail pv.', 'Skew', 'Kurtosis']
   _JB = pd.DataFrame(sms.jarque_bera(u), index=rname)
   _JB.columns = ['JB-stat.']
+  JB['JB-adj'] = [sms.jarque_bera(model.resid)[0]/nobs*dof,scs.chi.cdf(sms.jarque_bera(model.resid)[0]/nobs*dof,2),'','']
   print('\n')
   print(_JB)
   print('\n\n')
