@@ -63,6 +63,7 @@ def mktm(_r_y, _r_x, _startobs, _endobs, _nlag):
   import numpy as np
   import pandas as pd
   import statsmodels.tsa.api as smt
+  import scipy.stats as scs
 
   '''
   MarketM(): Market Model 估計和殘差檢定
