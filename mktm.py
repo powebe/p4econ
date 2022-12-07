@@ -79,7 +79,7 @@ def mktm(_r_y, _r_x, _startobs, _endobs, _nlag):
   rname=['Jarque-Bera', 'JB two-tail pv.', 'Skew', 'Kurtosis']
   _JB = pd.DataFrame(sms.jarque_bera(u), index=rname)
   _JB.columns = ['JB-stat.']
-  JB['JB-adj'] = [sms.jarque_bera(model.resid)[0]/nobs*dof,scs.chi.cdf(sms.jarque_bera(model.resid)[0]/nobs*dof,2),'','']
+  _JB['JB-adj'] = [sms.jarque_bera(model.resid)[0]/nobs*dof,scs.chi.cdf(sms.jarque_bera(model.resid)[0]/nobs*dof,2),'','']
   print('\n')
   print(_JB)
   print('\n\n')
