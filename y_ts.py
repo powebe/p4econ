@@ -99,10 +99,10 @@ def mktm(_r_y, _r_x, _startobs, _endobs, _nlag,robust=''):
   model = sm.OLS(_y, _x).fit()
   nobs = model.nobs
   '''
-  if robust=='HAC':
-    # _maxlag as recommended by Stock and Watson (2003)
-    _maxlag = int(nobs**(1/3)*0.75)
-    model = sm.OLS(_y, _x).fit(cov_type='HAC',cov_kwds={'maxlags':_maxlag})
+  #if robust=='HAC':
+  #  # _maxlag as recommended by Stock and Watson (2003)
+  #  _maxlag = int(nobs**(1/3)*0.75)
+  #  model = sm.OLS(_y, _x).fit(cov_type='HAC',cov_kwds={'maxlags':_maxlag})
   '''
   # print(model)
   print(model.summary2())
