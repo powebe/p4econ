@@ -113,7 +113,7 @@ def mktm(_r_y, _r_x, _startobs, _endobs, _nlag,robust=''):
   u = model.resid
   u.name = "u 殘差"
   # 取得樣本數 and dof 模型自由度
-  nobs = model.nobs
+  #nobs = model.nobs
   dof = model.df_resid
 	
   import statsmodels.stats.diagnostic as ssd
