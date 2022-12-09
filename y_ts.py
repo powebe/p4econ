@@ -59,7 +59,7 @@ def Q_test(_Y,_nlag):
   _correl=pd.DataFrame({'LAG':range(1,_nlag+1),'acf':acf[1:],'pacf':pacf[1:],'Q':q,'p-val':pval},index=range(1,_nlag+1))
   print(_correl.round(4))
 
-def mktm(_r_y, _r_x, _startobs, _endobs, _nlag):
+def mktm(_r_y, _r_x, _startobs, _endobs, _nlag,robust=''):
   import numpy as np
   import pandas as pd
   import statsmodels.tsa.api as smt
@@ -96,9 +96,14 @@ def mktm(_r_y, _r_x, _startobs, _endobs, _nlag):
 #fit regression model
   import statsmodels.api as sm
   _y.name = _r_y.name
-  model = sm.OLS(_y, _x).fit()
+  if robust=='HAC':
+    # _maxlag as recommended by Stock and Watson (2003)
+    _maxlag = int(nobs**(1/3)*0.75)
+    model = sm.OLS(_y, _x).fit(cov_type='HAC',cov_kwds={'maxlags':_maxlag})
+  else:
+    model = sm.OLS(_y, _x).fit()
   # print(model)
-  print(model.summary())
+  print(model.summary2())
 
   # 從 model 中取得殘差平方 usq，殘差 u
   usq = model.resid**2
