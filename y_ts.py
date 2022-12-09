@@ -105,7 +105,7 @@ def mktm(_r_y, _r_x, _startobs, _endobs, _nlag,robust=''):
     model = sm.OLS(_y, _x).fit(cov_type='HAC',cov_kwds={'maxlags':_maxlag})
   
   # print(model)
-  print(model.summary())
+  print(model.summary2())
 
   # 從 model 中取得殘差平方 usq，殘差 u
   usq = model.resid**2
