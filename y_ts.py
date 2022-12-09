@@ -129,7 +129,7 @@ def mktm(_r_y, _r_x, _startobs, _endobs, _nlag):
   #_JB['JB-adj'] = [sms.jarque_bera(u)/nobs*dof,scs.chi.cdf(sms.jarque_bera(u)/nobs*dof,2),'','']
   _JBadj = sms.jarque_bera(model.resid)[0]/nobs*dof
   _JBadj_pv = scs.chi.cdf(sms.jarque_bera(model.resid)[0]/nobs*dof,2)
-  _JB['JB-adj'] = df.DataFrame((_JBadj,_JBadj_pv,sms.jarque_bera(u)[2],sms.jarque_bera(u)[3]),index=rname)
+  _JB['JB-adj'] = pd.DataFrame((_JBadj,_JBadj_pv,sms.jarque_bera(u)[2],sms.jarque_bera(u)[3]),index=rname)
   print('\n')
   print(_JB.round(4))
   print('\n\n')
