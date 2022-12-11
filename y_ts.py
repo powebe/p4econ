@@ -1,10 +1,25 @@
 '''
 # y_ts: 時間序列工具
-# 版本：v02
-# 日期：2022.7.9
+# 版本：v2022.2
+# 日期：2022.12.11
+#      add pearson_cv(_alpha,_n)
 # TBD：
       1. _r_x 改成三因子，允許 _r_x as pd
+==changelog==
+# 版本：v2022.1
+# 日期：2022.7.9
+
 '''
+def pearson_cv(_alpha,_n):
+    import scipy.stats as scs
+    # 老師寫的自訂函數，計算 pearson 相關係數檢定臨界值
+    # 參數1：顯著水準; 參數2: 樣本數
+    _dof = _n-2
+    _t =scs.t.ppf(q=(1-_alpha/2),df=_dof)
+    _cv = _t/(_dof+_t**2)**0.5
+    print('===Pearson 相關係數臨界值===')
+    print(f'{_alpha*100:.0f}% critical value (two-tailed) = {_cv:.4f}, for n = {_n:.0f}')
+    return _cv
 def diff(y):
 	import numpy as np
 	d_y = y-y.shift(1)
