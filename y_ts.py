@@ -141,3 +141,23 @@ def mktm(_r_y, _r_x, _startobs, _endobs, _nlag,robust=''):
   print(_JB.round(4))
   print('\n\n')
   return model
+def F_test(_dat1,_dat2):
+  # 兩變數變異數是否相同之 F_test
+  import scipy.stats as scs
+  var1 = _dat1.var()
+  var2 = _dat2.var()
+  f_stat = var1 / var2
+  dof1 = len(_dat1) - 1
+  dof2 = len(_dat2) - 1
+  # F 分配的
+  f_cdf = scs.f.cdf(f_stat, dof1, dof2)
+  f_pv = 1-f_cdf
+  f_pv_2tailed = f_pv*2
+  # 使用 f-字串 語法來輸出
+  print('===二常態母體變異數相等 F 檢定===')
+  print(f'樣本1({_dat1.name}):\n n={len(_dat1)}, 變異數 ={var1:.4f}')
+  print(f'樣本2({_dat2.name}):\n n={len(_dat2)}, 變異數 ={var2:.4f}')
+  print(f'F({dof1},{dof2})-值 = {f_stat:.4f}' )
+  print(f'two-tailed p-value =  {f_pv*2:.4f}' )
+  print(f'(one-tailed p-value =  {f_pv:.4f})' )
+  return f_stat, f_pv
