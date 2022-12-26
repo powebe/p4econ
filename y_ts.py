@@ -121,6 +121,7 @@ def mktm(_r_y, _r_x, _startobs, _endobs, _nlag,robust=''):
     print(f'{robust} standard errors, bandwidth {_maxlag} (bartlett kernel)')
   
   # print(model)
+  print(f'樣本期間：{dfr.index[0]} 至 {dfr.index[len(dfr)-1]}')
   print(model.summary2())
 
   # 從 model 中取得殘差平方 usq，殘差 u
